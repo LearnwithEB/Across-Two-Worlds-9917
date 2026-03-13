@@ -1,17 +1,975 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/bridge.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Across Two Worlds - You Are a Bridge. Victory Christian Fellowship - Elevate Youth." />
-    <title>Across Two Worlds | You Are a Bridge</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Across Two Worlds — You Are a Bridge | Victory Christian Fellowship</title>
+<meta name="description" content="You live between two worlds. The tension is real. But you were made to be a bridge. Victory Elevate Youth - March 8, 2026">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight: #0a0f1e;
+    --deep: #111827;
+    --gold: #f5b942;
+    --amber: #e8813a;
+    --warm: #fdf3e3;
+    --light-text: #c4b8a0;
+    --card-bg: #141c2e;
+    --card-border: #1e2d4a;
+    --faith: #7ec8c8;
+    --babylon: #e85d5d;
+    --kingdom: #5dd8a0;
+    --bridge: #a78bfa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--midnight);
+    color: var(--warm);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(245,185,66,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .org-badge {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(245,185,66,0.3);
+    border-radius: 20px;
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .bridge-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: glow 3s ease-in-out infinite alternate;
+    filter: drop-shadow(0 0 20px rgba(245,185,66,0.6));
+  }
+
+  @keyframes glow {
+    from { filter: drop-shadow(0 0 10px rgba(245,185,66,0.4)); transform: scale(1); }
+    to { filter: drop-shadow(0 0 30px rgba(245,185,66,0.8)); transform: scale(1.05); }
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 8vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 0.8rem;
+    background: linear-gradient(135deg, #f5b942, #fdf3e3, #e8813a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero .tagline {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--light-text);
+    max-width: 360px;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .hero .verse {
+    background: rgba(245,185,66,0.08);
+    border: 1px solid rgba(245,185,66,0.2);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-style: italic;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .scroll-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--light-text);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* === SECTION === */
+  .section {
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-label h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--warm);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-label p {
+    color: var(--light-text);
+    font-size: 0.95rem;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* === TWO WORLDS === */
+  .two-worlds {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .two-worlds { grid-template-columns: 1fr; }
+  }
+
+  .world-card {
+    border-radius: 18px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .world-card.babylon {
+    background: linear-gradient(135deg, rgba(232,93,93,0.12), rgba(232,93,93,0.04));
+    border: 1px solid rgba(232,93,93,0.25);
+  }
+
+  .world-card.kingdom {
+    background: linear-gradient(135deg, rgba(93,216,160,0.12), rgba(93,216,160,0.04));
+    border: 1px solid rgba(93,216,160,0.25);
+  }
+
+  .world-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .world-card.babylon h3 { color: var(--babylon); }
+  .world-card.kingdom h3 { color: var(--kingdom); }
+
+  .world-card ul {
+    list-style: none;
+  }
+
+  .world-card li {
+    padding: 0.35rem 0;
+    padding-left: 1.4rem;
+    position: relative;
+    font-size: 0.9rem;
+    color: var(--light-text);
+  }
+
+  .world-card.babylon li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--babylon);
+  }
+
+  .world-card.kingdom li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--kingdom);
+    font-size: 0.8rem;
+  }
+
+  /* === BRIDGE STRIP === */
+  .bridge-strip {
+    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(167,139,250,0.05));
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .bridge-strip .icon {
+    font-size: 1.8rem;
+  }
+
+  .bridge-strip .text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--bridge);
+  }
+
+  /* === SCRIPTURE BLOCK === */
+  .scripture-block {
+    background: rgba(245,185,66,0.08);
+    border: 1px solid rgba(245,185,66,0.2);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .scripture-block blockquote {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--gold);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .scripture-block cite {
+    font-size: 0.8rem;
+    color: var(--amber);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  .scripture-block .note {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(245,185,66,0.15);
+    font-size: 0.85rem;
+    color: var(--light-text);
+    line-height: 1.6;
+  }
+
+  /* === RESPONSE CARDS === */
+  .responses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .responses-grid { grid-template-columns: 1fr; }
+  }
+
+  .response-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .response-card .emoji { font-size: 2rem; margin-bottom: 0.6rem; }
+
+  .response-card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  .response-card.babylon-r h4 { color: var(--babylon); }
+  .response-card.kingdom-r h4 { color: var(--kingdom); }
+  .response-card.bridge-r h4 { color: var(--bridge); }
+  .response-card.bridge-r { border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); }
+
+  .response-card p {
+    font-size: 0.82rem;
+    color: var(--light-text);
+    line-height: 1.5;
+  }
+
+  /* === GIFT CARDS === */
+  .gifts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .gift-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .gift-card:active { transform: scale(0.98); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .card-header-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--warm);
+    margin-bottom: 0.15rem;
+  }
+
+  .card-header-text .subtitle {
+    font-size: 0.75rem;
+    color: var(--light-text);
+  }
+
+  .card-toggle {
+    margin-left: auto;
+    color: var(--light-text);
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+  }
+
+  .gift-card.open .card-toggle { transform: rotate(180deg); }
+
+  .card-body {
+    display: none;
+    padding: 0 1.2rem 1.4rem;
+    border-top: 1px solid var(--card-border);
+    padding-top: 1.2rem;
+  }
+
+  .gift-card.open .card-body { display: block; }
+
+  .card-section-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  .career-steps {
+    list-style: none;
+    margin-bottom: 1.2rem;
+  }
+
+  .career-steps li {
+    font-size: 0.85rem;
+    color: var(--light-text);
+    padding: 0.35rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .career-steps li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-size: 0.8rem;
+  }
+
+  .resources {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    text-decoration: none;
+    font-size: 0.82rem;
+    color: var(--warm);
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .resource-link:hover { border-color: rgba(245,185,66,0.3); }
+  .resource-link .res-icon { font-size: 1rem; }
+  .resource-link .res-label { flex: 1; }
+  .resource-link .res-free {
+    font-size: 0.65rem;
+    background: rgba(245,185,66,0.15);
+    color: var(--gold);
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .faith-block {
+    background: rgba(126,200,200,0.07);
+    border: 1px solid rgba(126,200,200,0.2);
+    border-radius: 12px;
+    padding: 1rem;
+  }
+
+  .faith-block .faith-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faith);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .faith-block p {
+    font-size: 0.85rem;
+    color: #a8d8d8;
+    line-height: 1.6;
+  }
+
+  .faith-block .faith-verse {
+    margin-top: 0.6rem;
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--faith);
+    opacity: 0.8;
+  }
+
+  /* === REFLECTION === */
+  .reflection-box {
+    background: linear-gradient(135deg, rgba(245,185,66,0.1), rgba(232,129,58,0.05));
+    border: 1px solid rgba(245,185,66,0.25);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .reflection-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .reflection-box .sub {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--light-text);
+    margin-bottom: 1.5rem;
+  }
+
+  .reflection-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .reflection-item .num {
+    width: 28px;
+    height: 28px;
+    background: var(--gold);
+    color: var(--midnight);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .reflection-item p {
+    font-size: 0.95rem;
+    color: var(--warm);
+    line-height: 1.5;
+  }
+
+  /* === CTA === */
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 500px) {
+    .cta-grid { grid-template-columns: 1fr; }
+  }
+
+  .cta-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .cta-card.cross { border-color: rgba(93,216,160,0.3); }
+  .cta-card.become { border-color: rgba(167,139,250,0.3); }
+
+  .cta-card .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-card.cross .label { color: var(--kingdom); }
+  .cta-card.become .label { color: var(--bridge); }
+
+  .cta-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cta-card.cross h4 { color: var(--kingdom); }
+  .cta-card.become h4 { color: var(--bridge); }
+
+  .cta-card p {
+    font-size: 0.85rem;
+    color: var(--light-text);
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--card-border);
+  }
+
+  footer .closing {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  footer .scripture {
+    font-style: italic;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  footer .event {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  footer .credit {
+    margin-top: 1.5rem;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="org-badge">Victory Christian Fellowship · Elevate Youth · New Castle, DE</div>
+  <div class="bridge-icon">🌉</div>
+  <h1>Across Two Worlds</h1>
+  <p class="tagline">You Are a Bridge.<br>The tension is real. But you were made to connect.</p>
+  <div class="verse">"I am the way and the truth and the life. No one comes to the Father except through me." — John 14:6</div>
+  <div class="scroll-cta">
+    <span>Explore</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- TWO WORLDS -->
+<div class="section">
+  <div class="section-label">
+    <h2>You Live Between Two Worlds</h2>
+    <p>The tension you feel between these two worlds? That's real. And you're not alone in it.</p>
+  </div>
+
+  <div class="two-worlds">
+    <div class="world-card babylon">
+      <h3>Babylon</h3>
+      <ul>
+        <li>School · Social Media · Peer Pressure</li>
+        <li>Fitting In</li>
+        <li>The World's Voice</li>
+        <li>Cancel Culture · Gossip</li>
+        <li>Going along to get along</li>
+      </ul>
+    </div>
+    <div class="world-card kingdom">
+      <h3>Kingdom</h3>
+      <ul>
+        <li>Faith · Purpose · Identity in Christ</li>
+        <li>Standing Out</li>
+        <li>God's Voice</li>
+        <li>Peace · Love · Truth</li>
+        <li>Courage to speak up</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bridge-strip">
+    <span class="icon">🌉</span>
+    <span class="text">You Are The Bridge Between Them</span>
+  </div>
+
+  <div class="scripture-block">
+    <blockquote>"For no one can lay any foundation other than the one already laid, which is Jesus Christ."</blockquote>
+    <cite>— 1 Corinthians 3:11</cite>
+    <p class="note">This isn't advice — it's architecture. One foundation. Every other support structure is secondary. The ruler holds. The paper falls.</p>
+  </div>
+</div>
+
+<!-- THE LEAP -->
+<div class="section">
+  <div class="section-label">
+    <h2>The Leap of Faith</h2>
+    <p>Like Miles Morales in the Spider-Verse, you have to leap before you see the landing. Analyzing isn't enough.</p>
+  </div>
+
+  <div class="scripture-block">
+    <blockquote>"Now faith is confidence in what we hope for and assurance about what we do not see."</blockquote>
+    <cite>— Hebrews 11:1</cite>
+    <p class="note">The bridge isn't built before you move. You build it by moving.</p>
+  </div>
+
+  <div class="responses-grid">
+    <div class="response-card babylon-r">
+      <div class="emoji">🏙️</div>
+      <h4>Babylon Response</h4>
+      <p>Go along. Stay quiet. Don't make it weird.</p>
+    </div>
+    <div class="response-card kingdom-r">
+      <div class="emoji">👑</div>
+      <h4>Kingdom Response</h4>
+      <p>Stand firm. Speak up. Represent.</p>
+    </div>
+    <div class="response-card bridge-r">
+      <div class="emoji">🌉</div>
+      <h4>Bridge Response</h4>
+      <p>Stay in the room AND bring the Kingdom into it.</p>
+    </div>
+  </div>
+</div>
+
+<!-- GIFTS -->
+<div class="section">
+  <div class="section-label">
+    <h2>Your Gift Is Your Mission Field</h2>
+    <p>Tap a gift below to explore your career path, free resources, and how to be a light through it.</p>
+  </div>
+
+  <div class="gifts-grid" id="giftsGrid">
+
+    <!-- FINANCE -->
+    <div class="gift-card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(52,199,89,0.12);">📈</div>
+        <div class="card-header-text">
+          <h3>Stock Trading & Finance</h3>
+          <span class="subtitle">Build wealth. Fund vision.</span>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <p class="card-section-title">Career Pathway</p>
+        <ul class="career-steps">
+          <li>Learn market fundamentals — stocks, bonds, ETFs</li>
+          <li>Practice with paper trading before real money</li>
+          <li>Explore: Financial Analyst, Investment Advisor, Trader</li>
+        </ul>
+        <p class="card-section-title">Free Resources</p>
+        <div class="resources">
+          <a class="resource-link" href="https://www.investopedia.com" target="_blank">
+            <span class="res-icon">💻</span><span class="res-label">Investopedia</span><span class="res-free">Free</span>
+          </a>
+          <a class="resource-link" href="https://www.khanacademy.org/economics-finance-domain" target="_blank">
+            <span class="res-icon">🎓</span><span class="res-label">Khan Academy — Finance</span><span class="res-free">Free</span>
+          </a>
+        </div>
+        <div class="faith-block">
+          <div class="faith-title">✦ Your Light in This Field</div>
+          <p>Use your financial gift to fund kingdom work, mentor underserved communities in wealth-building, and model ethical stewardship.</p>
+          <div class="faith-verse">"Wealth gained hastily will dwindle, but whoever gathers little by little will increase it." — Proverbs 13:11</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ART -->
+    <div class="gift-card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(255,149,0,0.12);">🎨</div>
+        <div class="card-header-text">
+          <h3>Visual Art & Design</h3>
+          <span class="subtitle">Create beauty. Carry meaning.</span>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <p class="card-section-title">Career Pathway</p>
+        <ul class="career-steps">
+          <li>Build a portfolio — start on Instagram, Behance</li>
+          <li>Learn digital tools: Procreate, Adobe Illustrator</li>
+          <li>Explore: Graphic Designer, Illustrator, Art Director</li>
+        </ul>
+        <p class="card-section-title">Free Resources</p>
+        <div class="resources">
+          <a class="resource-link" href="https://www.behance.net" target="_blank">
+            <span class="res-icon">🖼️</span><span class="res-label">Behance Portfolio</span><span class="res-free">Free</span>
+          </a>
+          <a class="resource-link" href="https://www.canva.com/designschool" target="_blank">
+            <span class="res-icon">🎓</span><span class="res-label">Canva Design School</span><span class="res-free">Free</span>
+          </a>
+        </div>
+        <div class="faith-block">
+          <div class="faith-title">✦ Your Light in This Field</div>
+          <p>Art has always carried the gospel — from cathedral windows to modern murals. Your design can speak truth before a word is said.</p>
+          <div class="faith-verse">"You are the light of the world. A town built on a hill cannot be hidden." — Matthew 5:14</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="gift-card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(90,200,250,0.12);">🏛️</div>
+        <div class="card-header-text">
+          <h3>Architecture & Design</h3>
+          <span class="subtitle">Shape spaces. Shape lives.</span>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <p class="card-section-title">Career Pathway</p>
+        <ul class="career-steps">
+          <li>Take drafting, geometry, and physics seriously</li>
+          <li>Learn AutoCAD, SketchUp (free student licenses)</li>
+          <li>Explore: Architect, Urban Planner, Civil Engineer</li>
+        </ul>
+        <p class="card-section-title">Free Resources</p>
+        <div class="resources">
+          <a class="resource-link" href="https://www.autodesk.com/education/edu-software/overview" target="_blank">
+            <span class="res-icon">🖥️</span><span class="res-label">Autodesk (Free for Students)</span><span class="res-free">Free</span>
+          </a>
+          <a class="resource-link" href="https://www.archdaily.com" target="_blank">
+            <span class="res-icon">🌐</span><span class="res-label">ArchDaily</span><span class="res-free">Free</span>
+          </a>
+        </div>
+        <div class="faith-block">
+          <div class="faith-title">✦ Your Light in This Field</div>
+          <p>God was the first architect. Design spaces that bring dignity to underserved neighborhoods. Every structure is an opportunity to serve.</p>
+          <div class="faith-verse">"Unless the Lord builds the house, the builders labor in vain." — Psalm 127:1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUSIC -->
+    <div class="gift-card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(175,82,222,0.12);">🎵</div>
+        <div class="card-header-text">
+          <h3>Music & Performance</h3>
+          <span class="subtitle">Move hearts. Shift atmospheres.</span>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <p class="card-section-title">Career Pathway</p>
+        <ul class="career-steps">
+          <li>Record yourself — build your sound identity</li>
+          <li>Learn music theory, production, audio engineering</li>
+          <li>Explore: Musician, Producer, Music Therapist</li>
+        </ul>
+        <p class="card-section-title">Free Resources</p>
+        <div class="resources">
+          <a class="resource-link" href="https://www.bandlab.com" target="_blank">
+            <span class="res-icon">🎛️</span><span class="res-label">BandLab (Free DAW)</span><span class="res-free">Free</span>
+          </a>
+          <a class="resource-link" href="https://www.musictheory.net" target="_blank">
+            <span class="res-icon">🎼</span><span class="res-label">MusicTheory.net</span><span class="res-free">Free</span>
+          </a>
+        </div>
+        <div class="faith-block">
+          <div class="faith-title">✦ Your Light in This Field</div>
+          <p>Music softens walls nothing else can break. Your melody can carry the gospel into rooms where preaching never gets an invitation.</p>
+          <div class="faith-verse">"Sing to the Lord a new song; sing to the Lord, all the earth." — Psalm 96:1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH -->
+    <div class="gift-card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(50,215,75,0.12);">💻</div>
+        <div class="card-header-text">
+          <h3>Technology & Coding</h3>
+          <span class="subtitle">Build tools. Solve problems.</span>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <p class="card-section-title">Career Pathway</p>
+        <ul class="career-steps">
+          <li>Start with Python, JavaScript, or Scratch</li>
+          <li>Build projects, not just tutorials</li>
+          <li>Explore: Software Engineer, AI Developer, UX Designer</li>
+        </ul>
+        <p class="card-section-title">Free Resources</p>
+        <div class="resources">
+          <a class="resource-link" href="https://www.freecodecamp.org" target="_blank">
+            <span class="res-icon">🔵</span><span class="res-label">freeCodeCamp</span><span class="res-free">Free</span>
+          </a>
+          <a class="resource-link" href="https://cs50.harvard.edu" target="_blank">
+            <span class="res-icon">🎓</span><span class="res-label">Harvard CS50</span><span class="res-free">Free</span>
+          </a>
+        </div>
+        <div class="faith-block">
+          <div class="faith-title">✦ Your Light in This Field</div>
+          <p>Technology reaches billions. Build apps for the underserved. The most powerful mission fields of this generation are digital.</p>
+          <div class="faith-verse">"Whatever you do, work at it with all your heart, as working for the Lord." — Colossians 3:23</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPORTS -->
+    <div class="gift-card" onclick="toggleCard(this)">
+      <div class="card-header">
+        <div class="card-icon" style="background: rgba(255,69,58,0.12);">🏀</div>
+        <div class="card-header-text">
+          <h3>Sports & Athletics</h3>
+          <span class="subtitle">Lead on the field. Lead off it.</span>
+        </div>
+        <div class="card-toggle">▾</div>
+      </div>
+      <div class="card-body">
+        <p class="card-section-title">Career Pathway</p>
+        <ul class="career-steps">
+          <li>Develop discipline, teamwork, and leadership</li>
+          <li>Study sports medicine, coaching, or management</li>
+          <li>Explore: Coach, Athletic Trainer, Sports Agent</li>
+        </ul>
+        <p class="card-section-title">Free Resources</p>
+        <div class="resources">
+          <a class="resource-link" href="https://www.ymcade.org" target="_blank">
+            <span class="res-icon">🏋️</span><span class="res-label">YMCA Delaware</span><span class="res-free">Programs</span>
+          </a>
+        </div>
+        <div class="faith-block">
+          <div class="faith-title">✦ Your Light in This Field</div>
+          <p>Your discipline on the field is a testimony. Lead your team beyond the scoreboard. The locker room is your mission field.</p>
+          <div class="faith-verse">"I can do all things through Christ who strengthens me." — Philippians 4:13</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- REFLECTION -->
+<div class="section">
+  <div class="reflection-box">
+    <h3>Your Bridge Lane</h3>
+    <p class="sub">Take 90 seconds. Answer honestly. This is between you and God.</p>
+    <div class="reflection-item">
+      <span class="num">1</span>
+      <p>Where do you feel stuck between Babylon and the Kingdom right now?</p>
+    </div>
+    <div class="reflection-item">
+      <span class="num">2</span>
+      <p>Who is the ONE person God is asking you to be a bridge for this week?</p>
+    </div>
+    <div class="reflection-item">
+      <span class="num">3</span>
+      <p>What is ONE practical thing you can do this week to move them closer to Jesus?</p>
+    </div>
+  </div>
+
+  <div class="cta-grid">
+    <div class="cta-card cross">
+      <div class="label">For the Seekers</div>
+      <h4>Cross the Bridge</h4>
+      <p>Accept Jesus. Start the journey.</p>
+    </div>
+    <div class="cta-card become">
+      <div class="label">For the Builders</div>
+      <h4>Become the Bridge</h4>
+      <p>Name your person. Commit to one step.</p>
+    </div>
+  </div>
+
+  <div class="scripture-block">
+    <blockquote>"...that we may present everyone mature in Christ."</blockquote>
+    <cite>— Colossians 1:28</cite>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="closing">You Are a Bridge.</p>
+  <p class="scripture">"Built on the only foundation that holds — Jesus Christ."<br><small>1 Corinthians 3:11</small></p>
+  <p class="event">Victory Christian Fellowship · Elevate Youth · March 8, 2026</p>
+  <p class="credit">Built with Claude AI · New Castle, DE</p>
+</footer>
+
+<script>
+  function toggleCard(card) {
+    card.classList.toggle('open');
+  }
+</script>
+
+</body>
 </html>
