@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Across Two Worlds | You Are a Bridge</title>
-    <meta name="description" content="You live between two worlds. The tension is real. But you were made to be a bridge.">
+    <title>Eric Brown Jr. | Projects & Events</title>
+    <meta name="description" content="Building bridges between human potential and digital possibility.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-base: #050508;
-            --color-surface: #0a0a0f;
+            --color-base: #050505;
+            --color-surface: #0a0a0a;
+            --color-surface-2: #111111;
             --color-primary: #00f2ff;
             --color-secondary: #ffffff;
-            --color-muted: #888899;
-            --color-gold: #ffd700;
-            --color-kingdom: #00ff88;
-            --color-babylon: #ff6b6b;
+            --color-muted: #666666;
+            --color-success: #00ff88;
+            --color-warning: #ffaa00;
+            --color-purple: #a855f7;
             --glow-primary: 0 0 20px rgba(0, 242, 255, 0.3);
-            --glow-gold: 0 0 30px rgba(255, 215, 0, 0.4);
         }
 
         * {
@@ -34,10 +34,9 @@
             color: var(--color-secondary);
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Animated background */
+        /* Grid background */
         .bg-grid {
             position: fixed;
             top: 0;
@@ -55,43 +54,29 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
-        /* Hero Section */
-        .hero {
+        /* Header */
+        header {
             text-align: center;
             padding: 4rem 0 3rem;
-            position: relative;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .subtitle {
+        .logo {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.85rem;
             color: var(--color-primary);
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
         }
 
         h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2rem, 6vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.1;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
             -webkit-background-clip: text;
@@ -100,256 +85,240 @@
         }
 
         .tagline {
-            font-size: 1.5rem;
-            color: var(--color-gold);
-            font-weight: 500;
-            text-shadow: var(--glow-gold);
+            font-size: 1.1rem;
+            color: var(--color-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Section */
+        section {
+            margin: 4rem 0;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 2rem;
         }
 
-        .event-info {
+        .section-header h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+        }
+
+        .section-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .event-info span {
-            color: var(--color-primary);
-        }
-
-        /* Two Worlds Section */
-        .two-worlds {
+        /* Project Grid */
+        .projects-grid {
             display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 1rem;
-            margin: 4rem 0;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
 
-        .world-card {
-            padding: 2rem;
+        .project-card {
+            background: var(--color-surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            text-align: center;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
             position: relative;
             overflow: hidden;
         }
 
-        .world-card::before {
+        .project-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            border-radius: 12px;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--border-color) 0%, transparent 50%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
+            height: 3px;
+            background: var(--card-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .babylon {
-            background: rgba(255, 107, 107, 0.05);
-            --border-color: var(--color-babylon);
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .kingdom {
-            background: rgba(0, 255, 136, 0.05);
-            --border-color: var(--color-kingdom);
+        .project-card:hover::before {
+            opacity: 1;
         }
 
-        .world-card h3 {
-            font-size: 1.3rem;
+        .project-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            display: inline-block;
             margin-bottom: 1rem;
-            font-weight: 600;
         }
 
-        .babylon h3 { color: var(--color-babylon); }
-        .kingdom h3 { color: var(--color-kingdom); }
-
-        .world-card ul {
-            list-style: none;
-            font-size: 0.95rem;
-            color: var(--color-muted);
+        .tag-ministry {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--color-success);
         }
 
-        .world-card li {
-            padding: 0.3rem 0;
-        }
-
-        .bridge-icon {
-            font-size: 2.5rem;
+        .tag-elvte {
+            background: rgba(0, 242, 255, 0.1);
             color: var(--color-primary);
-            text-shadow: var(--glow-primary);
         }
 
-        /* Quote Section */
-        .quote-section {
-            background: var(--color-surface);
-            border-left: 3px solid var(--color-gold);
-            padding: 2rem;
-            margin: 3rem 0;
-            border-radius: 0 12px 12px 0;
+        .tag-client {
+            background: rgba(168, 85, 247, 0.1);
+            color: var(--color-purple);
         }
 
-        .quote-section blockquote {
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--color-secondary);
+        .tag-personal {
+            background: rgba(255, 170, 0, 0.1);
+            color: var(--color-warning);
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
-        .quote-section cite {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--color-gold);
-        }
-
-        /* Key Message */
-        .key-message {
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .key-message h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-primary);
-        }
-
-        .key-message p {
-            font-size: 1.1rem;
-            color: var(--color-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        /* Reflection Questions */
-        .reflection {
-            background: linear-gradient(135deg, rgba(0, 242, 255, 0.05) 0%, rgba(255, 215, 0, 0.05) 100%);
-            border-radius: 16px;
-            padding: 2.5rem;
-            margin: 3rem 0;
-        }
-
-        .reflection h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--color-secondary);
-        }
-
-        .reflection-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .reflection-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--color-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--color-base);
-            flex-shrink: 0;
-        }
-
-        .reflection-text {
-            font-size: 1.05rem;
-            color: var(--color-secondary);
-        }
-
-        /* Call to Action */
-        .cta-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
-
-        .cta-card {
-            background: var(--color-surface);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--glow-primary);
-        }
-
-        .cta-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            color: var(--color-primary);
-        }
-
-        .cta-card p {
-            color: var(--color-muted);
+        .project-card p {
             font-size: 0.95rem;
+            color: var(--color-muted);
             margin-bottom: 1rem;
         }
 
-        .cta-card .label {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--color-gold);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .arrow {
+            margin-left: auto;
+            color: var(--color-primary);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Coming Soon Card */
+        .coming-soon {
+            background: var(--color-surface);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--color-muted);
+        }
+
+        .coming-soon h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
         }
 
         /* Footer */
-        .footer {
+        footer {
             text-align: center;
             padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             margin-top: 4rem;
         }
 
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .footer p {
+        .footer-links a {
+            color: var(--color-muted);
+            text-decoration: none;
             font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
             color: var(--color-muted);
         }
 
-        .footer .scripture {
-            margin-top: 1.5rem;
-            font-style: italic;
-            color: var(--color-gold);
+        .footer-copy span {
+            color: var(--color-primary);
+        }
+
+        /* Status indicator */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .two-worlds {
+            .projects-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
 
-            .bridge-icon {
-                transform: rotate(90deg);
-            }
-
-            .hero {
+            header {
                 padding: 2rem 0;
             }
 
-            .reflection {
-                padding: 1.5rem;
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -358,85 +327,83 @@
     <div class="bg-grid"></div>
 
     <div class="container">
-        <header class="hero">
-            <p class="subtitle">Victory Christian Fellowship · Elevate Youth</p>
-            <h1>Across Two Worlds</h1>
-            <p class="tagline">You Are a Bridge.</p>
-            <p class="event-info"><span>March 8, 2026</span></p>
+        <header>
+            <p class="logo">LearnwithEB</p>
+            <h1>Eric Brown Jr.</h1>
+            <p class="tagline">Building bridges between human potential and digital possibility.</p>
         </header>
 
-        <section class="two-worlds">
-            <div class="world-card babylon">
-                <h3>BABYLON</h3>
-                <ul>
-                    <li>School · Social Media</li>
-                    <li>Peer Pressure</li>
-                    <li>Fitting In</li>
-                    <li>The World's Voice</li>
-                </ul>
+        <!-- Community & Ministry -->
+        <section>
+            <div class="section-header">
+                <h2>Community & Ministry</h2>
+                <div class="section-line"></div>
+                <span class="section-tag">Events</span>
             </div>
 
-            <div class="bridge-icon">⟷</div>
+            <div class="projects-grid">
+                <a href="https://learnwitheb.github.io/Across-Two-Worlds-9917/" class="project-card" style="--card-accent: var(--color-success);">
+                    <span class="project-tag tag-ministry">Ministry</span>
+                    <h3>Across Two Worlds</h3>
+                    <p>Youth ministry message for Victory Christian Fellowship - Elevate Youth.</p>
+                    <div class="project-meta">
+                        <span class="status"><span class="status-dot"></span> Live</span>
+                        <span>March 2026</span>
+                        <span class="arrow">→</span>
+                    </div>
+                </a>
 
-            <div class="world-card kingdom">
-                <h3>KINGDOM</h3>
-                <ul>
-                    <li>Faith · Purpose</li>
-                    <li>Identity in Christ</li>
-                    <li>Standing Out</li>
-                    <li>God's Voice</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="quote-section">
-            <blockquote>"The tension you feel between those two worlds? That's real. And you're not alone in it."</blockquote>
-        </section>
-
-        <section class="key-message">
-            <h2>The Bridge Isn't Built Before You Move</h2>
-            <p>Like Miles Morales, you have to leap first. Faith is the assurance of things hoped for, the conviction of things not seen. You build the bridge by moving.</p>
-        </section>
-
-        <section class="quote-section">
-            <blockquote>"I am the way, the truth, and the life."</blockquote>
-            <cite>— John 14:6</cite>
-        </section>
-
-        <section class="reflection">
-            <h2>Your Bridge Lane</h2>
-            <div class="reflection-item">
-                <div class="reflection-icon">1</div>
-                <p class="reflection-text">Where do you feel stuck between Babylon and the Kingdom right now?</p>
-            </div>
-            <div class="reflection-item">
-                <div class="reflection-icon">2</div>
-                <p class="reflection-text">Who is the ONE person God is asking you to be a bridge for this week?</p>
-            </div>
-            <div class="reflection-item">
-                <div class="reflection-icon">3</div>
-                <p class="reflection-text">What is ONE practical thing you can do this week to move them closer to Jesus?</p>
+                <div class="coming-soon">
+                    <h3>More Events Coming</h3>
+                    <p>Future community events will appear here.</p>
+                </div>
             </div>
         </section>
 
-        <section class="cta-section">
-            <div class="cta-card">
-                <h3>Cross the Bridge</h3>
-                <p>Accept Jesus. Start the journey.</p>
-                <span class="label">For the seekers</span>
+        <!-- ELVTE Projects -->
+        <section>
+            <div class="section-header">
+                <h2>ELVTE</h2>
+                <div class="section-line"></div>
+                <span class="section-tag">Innovation Studio</span>
             </div>
-            <div class="cta-card">
-                <h3>Become the Bridge</h3>
-                <p>Name your person. Commit to one step.</p>
-                <span class="label">For the builders</span>
+
+            <div class="projects-grid">
+                <div class="coming-soon">
+                    <h3>ELVTE OS</h3>
+                    <p>Terminal-driven portfolio system. Coming soon.</p>
+                </div>
+
+                <div class="coming-soon">
+                    <h3>elvte.co</h3>
+                    <p>Innovation coaching & consulting. Coming soon.</p>
+                </div>
             </div>
         </section>
 
-        <footer class="footer">
-            <div class="footer-logo">ELEVATE YOUTH</div>
-            <p>Victory Christian Fellowship</p>
-            <p class="scripture">"Built on the only foundation that holds — Jesus Christ."<br>
-            <small>1 Corinthians 3:11</small></p>
+        <!-- Client Work -->
+        <section>
+            <div class="section-header">
+                <h2>Client Work</h2>
+                <div class="section-line"></div>
+                <span class="section-tag">Projects</span>
+            </div>
+
+            <div class="projects-grid">
+                <div class="coming-soon">
+                    <h3>Client Projects</h3>
+                    <p>Select client work will be showcased here.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-links">
+                <a href="https://linkedin.com/in/ericbrownjr">LinkedIn</a>
+                <a href="https://github.com/LearnwithEB">GitHub</a>
+                <a href="mailto:eric@ericbrownjr.com">Contact</a>
+            </div>
+            <p class="footer-copy">© 2026 Eric Brown Jr. · <span>ELVTE</span></p>
         </footer>
     </div>
 </body>
